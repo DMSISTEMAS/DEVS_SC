@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" xml:lang="es" 
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="/css/default.css" />
+        <link href="https://fonts.googleapis.com/css?family=Barlow:300display=swap" rel="stylesheet" />
+        <script src="../resources/js/sweetalert2@9.js" type="text/javascript"></script>
+        <title>SISTEMA DE CONTROL Y ASISTENCIA</title>
+
+    </h:head>
+
+    <h:body>
+
+        <h:body>
+
+            <div id="top">
+                <!--				<div id="menuPrincipal">-->
+                <h:form>
+                    <p:dock position="bottom" itemWidth="72" maxWidth="72">
+
+                        <p:menuitem value="Control" icon="../img/menu/control.png" outcome="/Views/Control.sys"/>
+                        <p:menuitem value="Catequizandos" icon="../img/menu/users.png" url="/Views/Catequizado.sys"/>
+                        <p:menuitem value="Catequistas" icon="../img/menu/team.png" url="/Views/Catequista.sys"/>
+                        <p:menuitem value="Horario" icon="../img/menu/horario.png" url="/Views/Horario.sys"/>
+                        <p:menuitem value="Inscripciones" icon="../img/menu/book_pencil.png" url="/Views/Inscripciones.sys"/>
+                        <p:menuitem value="Parroco" icon="../img/menu/Cruz.png" url="/Views/Parroco.sys"/>
+                        <p:menuitem value="Calificacion" icon="../img/menu/calificacion.png" url="/Views/Calificacion.sys"/>
+
+                    </p:dock>
+                </h:form>
+                <!--				</div>-->
+
+
+                <!--<b:navBar brand="Home" brandHref="#" fluid="true" inverse="false">
+                        <b:navbarLinks>
+                                <b:navLink value="Control" outcome="/Views/Control"/>
+                                <b:dropMenu value="Administrar" iconAwesome="birthday-cake">
+                                        <b:navLink value="Catequista" outcome="/Views/Catequista"/>
+                                        <b:navLink value="Alumno" outcome="/Views/Catequizado"/>
+                                        <b:navLink value="Libro" outcome="/Views/Libro"/>
+                                        <b:navLink value="Horario" outcome="/Views/Horario"/>
+                                        <b:navLink value="Parroco" outcome="/Views/Parroco"/>
+                                        <b:navLink header="Nav header"></b:navLink>
+                                        <b:navLink value="Separated link" href="#"></b:navLink>
+                                        <b:dropMenu value="" iconAwesome="birthday-cake" iconAlign="right">
+                                                <b:navLink value="You can nest menus" href="#"></b:navLink>
+                                                <b:dropMenu value="Nested sub-submenu">
+                                                        <b:navLink value="... as deep as ..." href="#"></b:navLink>
+                                                        <b:dropMenu value="Nested sub-sub-submenu">
+                                                                <b:navLink value="... you want!" href="#"></b:navLink>
+                                                        </b:dropMenu>
+                                                </b:dropMenu>
+
+                                        </b:dropMenu>
+
+                                </b:dropMenu>
+
+                        </b:navbarLinks>
+
+                
+                        <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks>
+                        <b:navbarLinks pull="right" styleClass="hidden-xs">
+                                <b:navLink value="Link" href="#"></b:navLink>
+                                <b:dropMenu value="Dropdown">
+                                        <b:navLink value="Action" href="#"></b:navLink>
+                                        <b:navLink value="Another action" href="#"></b:navLink>
+                                        <b:navLink value="Something else here" href="#"></b:navLink>
+                                        <b:navLink></b:navLink>
+                                        <b:navLink header="Nav header"></b:navLink>
+                                        <b:navLink value="Separated link" href="#"></b:navLink>
+                                        <b:navLink value="One more separated link" href="#"></b:navLink>
+                                </b:dropMenu>
+                        </b:navbarLinks>
+                </b:navBar>
+
+        </div>-->
+                <ui:insert name="top">
+
+                </ui:insert>
+            </div>
+
+            <div id="content" class="center_content">
+                <ui:insert name="content">Content</ui:insert>
+
+            </div>
+
+            <!--		<div id="bottom">
+                                    <ui:insert name="bottom">&copy; DM SISTEMAS 2020</ui:insert>
+                            </div>-->
+
+        </h:body>
+
+    </h:body>
+
+</html>

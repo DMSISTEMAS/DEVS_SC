@@ -1,0 +1,245 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <link
+            href="https://fonts.googleapis.com/css?family=Barlow:300display=swap"
+            rel="stylesheet" />
+    </h:head>
+    <body>
+
+        <ui:composition template="/Template/Template.xhtml">
+
+            <ui:define name="top">
+
+            </ui:define>
+
+            <ui:define name="content">
+                <!--Barra de tareas-->
+                <h:form>
+                    <b:panel id="topbar"  style="margin: 0 auto; text-align: center; font-size: 12px; font-family: 'Barlow', sans-serif">
+                        <table border="0">
+                            <thead>
+                                <tr>
+                                    <th>NUEVO</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td> <b:commandButton value="" oncomplete="PF('dlgAgregar').show()"
+                                                          style="height: 50px; width: 50px; background-image: url('/img/calendar.png') !important; 
+                                                          background-size: 48px; background-repeat: no-repeat"
+                                                          title="Agregar nuevo registro" update="frmAgregar:pnlAgregar"/></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </b:panel>
+                </h:form>
+                <!--Barra de tareas-->
+
+                <!--Formulario principal-->
+                <h:form id="frmPrincipal">
+                    <b:growl id="growlMsg" globalOnly="true" placementFrom="left"
+                             show-detail="true" show-summary="false" allowDismiss="true"
+                             delay="10000" escape="true" 
+                             animation-enter="animated bounceInDown"
+                             animation-exit="animated flipOutX"/>
+                    <b:panel id="pnlPrincipal" title="REGISTROS" 
+                             style="margin: 0 auto; text-align: center; font-size: 12px; font-family: 'Barlow', sans-serif">
+
+                        <b:dataTable var="var" value="#{calificacion.lista}">
+                            <b:dataTableColumn value="#{var.registro.catequizado.nombre}" label="Nombre"/>
+                            <b:dataTableColumn value="#{var.registro.catequizado.apellidoPaterno}" label="Ap. Paterno"/>
+                            <b:dataTableColumn value="#{var.registro.catequizado.apellidoMaterno}" label="Ap. Materno"/>
+                            <b:dataTableColumn value="#{var.registro.libro.nombre}" label="Libro"/>
+                            <b:dataTableColumn value="#{var.total}" label="Calificacion"/>
+                            <b:dataTableColumn value="#{var.estado}" label="Estatus"/>
+                            <b:dataTableColumn value="#{var.asistencia}" label="Asistencia"/>
+                            <b:dataTableColumn value="#{var.tareas}" label="Tareas"/>
+                            <b:dataTableColumn value="#{var.extras}" label="Calif. Extra"/>
+                            <b:dataTableColumn value="#{var.catequesis}" label="Catequesis"/>
+                            <b:dataTableColumn value="#{var.misa}" label="Misa"/>
+                            <b:dataTableColumn value="#{var.evaluacion}" label="Evaluacion"/>
+                            <b:dataTableColumn value="#{var.observaciones}" label="Observaciones"/>
+
+                            <b:dataTableColumn value="" label="Actualizar" style="width: 4%">
+                                <b:commandButton value=""
+                                                 size="sm"
+                                                 style="height: 28px; width: 28px; background-image: url('/img/edit.png') !important;
+                                                 background-size: 26px; background-repeat: no-repeat"
+                                                 title="Editar registro" oncomplete="PF('dlgEditar').show()"
+                                                 update="frmEditar">
+                                    <f:setPropertyActionListener value="#{var}"
+                                                                 target="#{horario.horario}" />
+                                </b:commandButton>
+                            </b:dataTableColumn>
+
+                            <b:dataTableColumn value="" label="Borrar" style="width: 4%">
+                                <b:commandButton value=""
+                                                 style="height: 28px; width: 28px; background-image: url('/img/delete.png') !important;
+                                                 background-size: 26px; background-repeat: no-repeat"
+                                                 title="Borrar registro" />
+                            </b:dataTableColumn>
+                        </b:dataTable>
+                    </b:panel>
+                </h:form>
+                <!--Formulario principal-->
+
+
+                <!--Diálogo para agregar-->
+                <h:form id="frmAgregar">
+
+                    <p:dialog id="dialogo" widgetVar="dlgAgregar" height="350px"
+                              width="600" header="Agregar nuevo registro" showEffect="clip"
+                              hideEffect="explode" resizable="true" responsive="true"
+                              style="font-size: 12px">
+                        <b:panel id="pnlAgregar" >
+                            <b:messages id="msg" showDetail="true" />
+                            <b:panelGrid id="panelAgregar" size="lg"
+                                         colSpans="4,8"
+                                         style="margin: 0 auto">
+
+                                <h:outputLabel for="dia" value="Día" />
+                                <b:selectOneMenu id="dia" value="#{horario.horario.dia}"
+                                                 required="true"
+                                                 requiredMessage="Se requiere día">
+                                    <f:selectItem itemLabel="Seleccione día" itemValue="" />
+                                    <f:selectItem itemLabel="Lunes" itemValue="Lunes" />
+                                    <f:selectItem itemLabel="Martes" itemValue="Martes" />
+                                    <f:selectItem itemLabel="Miércoles" itemValue="Miércoles" />
+                                    <f:selectItem itemLabel="Jueves" itemValue="Jueves" />
+                                    <f:selectItem itemLabel="Viernes" itemValue="Viernes" />
+                                    <f:selectItem itemLabel="Sábado" itemValue="Sábado" />
+                                    <f:selectItem itemLabel="Domingo" itemValue="Domingo" />
+                                    <p:message for="dia" />
+                                </b:selectOneMenu>
+
+                                <h:outputLabel for="fi" value="Hora inicial" />
+                                <b:dateTimePicker id="fi" value="#{horario.horario.horaInicio}"
+                                                  disabled="false" show-time="true" show-date="false"
+                                                  required="true" requiredMessage="Requiere horario inicial">
+                                    <p:message for="fi" />
+                                </b:dateTimePicker>
+
+                                <h:outputLabel for="ff" value="Hora final" />
+                                <b:dateTimePicker id="ff" value="#{horario.horario.horaFin}"
+                                                  disabled="false" show-time="true" show-date="false"
+                                                  required="true" requiredMessage="Requiere horario final">
+                                    <b:message for="ff" />
+                                </b:dateTimePicker>
+
+                                <h:outputLabel for="ffc" value="Inicio ciclo" />
+                                <b:dateTimePicker id="ffc" value="#{horario.horario.inicioCiclo}"
+                                                  disabled="false" show-time="false" show-date="true"
+                                                  required="true" requiredMessage="Requiere inicio de ciclo">
+                                    <b:message for="ffc" />
+                                </b:dateTimePicker>
+
+                                <h:outputLabel for="aa" value="Ciclo" />
+                                <b:inputText id="aa" value="#{horario.horario.nombre}"
+                                             placeholder="Coloca el año actual" required="true"
+                                             requiredMessage="Requiere año actual">
+                                    <b:message for="aa" />
+                                </b:inputText>
+                            </b:panelGrid>
+                            <p:spacer width="490" height="5" />
+                            <b:commandButton id="track"
+                                             style="height: 50px; width: 50px; background-image: url('/img/save.png') !important;
+                                             background-size: 50px; background-repeat: no-repeat"
+                                             value="" update="pnlAgregar, msg" title="Guardar registro"
+                                             actionListener="#{horario.guardar()}">
+                            </b:commandButton>
+                        </b:panel>
+
+                    </p:dialog>
+                </h:form>
+                <!--Diálogo para agregar-->
+
+                <!-- INICIA FORMUALARIO PARA EDITAR -->
+                <h:form id="frmEditar">
+                    <b:growl id="msgEditar" showDetail="true" showSummary="true" />
+                    <p:dialog id="dialogoEditar"
+                              header="Editar registro de: #{control.ciclo1920.registro.catequizado.nombre} #{control.ciclo1920.registro.catequizado.apellidoPaterno} #{control.ciclo1920.registro.catequizado.apellidoMaterno} / Fecha: #{control.ciclo1920.fecha}"
+                              widgetVar="dlgEditar" resizable="true" showEffect="clip"
+                              hideEffect="fold" width="600" style="font-size: 13px">
+                        <b:panelGrid id="pnlEditar" size="lg"
+                                     colSpans="3,9"
+                                     style="margin: 0 auto">
+
+                            <h:outputLabel for="diaA" value="Día" />
+                            <b:selectOneMenu id="diaA" value="#{horario.horario.dia}"
+                                             required="true"
+                                             requiredMessage="Se requiere día">
+                                <f:selectItem itemLabel="Seleccione día" itemValue="" />
+                                <f:selectItem itemLabel="Lunes" itemValue="Lunes" />
+                                <f:selectItem itemLabel="Martes" itemValue="Martes" />
+                                <f:selectItem itemLabel="Miércoles" itemValue="Miércoles" />
+                                <f:selectItem itemLabel="Jueves" itemValue="Jueves" />
+                                <f:selectItem itemLabel="Viernes" itemValue="Viernes" />
+                                <f:selectItem itemLabel="Sábado" itemValue="Sábado" />
+                                <f:selectItem itemLabel="Domingo" itemValue="Domingo" />
+                                <p:message for="diaA" />
+                            </b:selectOneMenu>
+
+                            <h:outputLabel for="fiA" value="Hora inicial" />
+                            <b:dateTimePicker id="fiA" value="#{horario.horario.horaInicio}"
+                                              disabled="false" show-time="true" show-date="false"
+                                              required="true" requiredMessage="Requiere horario inicial">
+                                <b:message for="fiA" />
+                            </b:dateTimePicker>
+
+                            <h:outputLabel for="ffA" value="Hora final" />
+                            <b:dateTimePicker id="ffA" value="#{horario.horario.horaFin}"
+                                              disabled="false" show-time="true" show-date="false"
+                                              required="true" requiredMessage="Requiere horario final">
+                                <p:message for="ffA" />
+                            </b:dateTimePicker>
+
+                            <h:outputLabel for="aaA" value="Año actual" />
+                            <b:inputText id="aaA" value="#{horario.horario.nombre}"
+                                         placeholder="Coloca el año actual" required="true"
+                                         requiredMessage="Requiere año actual">
+                                <b:message for="aaA" />
+                            </b:inputText>
+                        </b:panelGrid>
+                        <br></br>
+                        <p:spacer width="510" height="5" />
+                        <b:commandButton value=""
+                                         style="height:
+                                         50px; width: 50px; background-image:
+                                         url('/img/save.png') !important;
+                                         background-size: 50px; background-repeat:
+                                         no-repeat"
+                                         title="Actualizar registro"
+                                         actionListener="#{horario.actualizar()}"
+                                         oncomplete="PF('dlgEditar').hide()" update="frmPrincipal" />
+                    </p:dialog>
+                </h:form>
+                <!-- TERMINA FORMUALARIO PARA EDITAR -->
+
+            </ui:define>
+
+
+        </ui:composition>
+    </body>
+</html>

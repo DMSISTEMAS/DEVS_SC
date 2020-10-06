@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+	  xmlns:b="http://bootsfaces.net/ui">
+
+    <h:head>
+        <link
+            href="https://fonts.googleapis.com/css?family=Barlow:300display=swap"
+            rel="stylesheet" />
+    </h:head>
+    <body>
+        <ui:composition template="/Template/Template.xhtml">
+
+            <ui:define name="top">
+
+            </ui:define>
+
+            <ui:define name="content">
+                <!--Barra de tareas-->
+                <h:form>
+                    <b:panel id="topbar" style="margin: 0 auto; text-align: center; font-size: 12px; font-family: 'Barlow', sans-serif">
+						<table border="0">
+							<thead>
+								<tr>
+									<th>NUEVO</th>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td> <b:commandButton value=""
+														  oncomplete="PF('dlgAgregar').show()"
+														  style="height: 50px; width: 50px; background-image: url('/img/book.png') !important; 
+														  background-size: 50px; background-repeat: no-repeat"
+														  title="Agregar nuevo registro"
+														  update="frmAgregar:pnlAgregar" /></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+							</tbody>
+						</table>
+
+
+
+                    </b:panel>
+                </h:form>
+                <!--Barra de tareasl-->
+
+                <!--Formulario principal-->
+                <h:form id="frmPrincipal">
+					<b:growl id="growlMsg" globalOnly="true" placementFrom="left"
+                             show-detail="true" show-summary="false" allowDismiss="true"
+                             delay="10000" escape="true" 
+                             animation-enter="animated bounceInDown"
+                             animation-exit="animated flipOutX"/>
+                    <b:panel id="pnlPrincipal" title="REGISTROS" 
+                             style="margin: 0 auto; text-align: center; font-size: 12px; font-family: 'Barlow', sans-serif">
+						<b:dataTable var="var" value="#{libro.lista}" >
+							<b:dataTableColumn value="#{var.nombre}" />
+							<b:dataTableColumn value="#{var.descripcion}" />
+
+							<b:dataTableColumn value="" label="Actualizar" style="width: 5%">
+								<b:commandButton value=""
+												 size="sm"
+												 style="height: 28px; width: 28px; background-image: url('/img/edit.png') !important;
+												 background-size: 26px; background-repeat: no-repeat"
+												 title="Editar registro" 
+												 oncomplete="PF('dlgEditar').show()"
+												 update="frmEditar">
+									<f:setPropertyActionListener value="#{var}"
+																 target="#{libro.libro}" />
+								</b:commandButton>
+							</b:dataTableColumn>
+
+							<b:dataTableColumn value=""  label="Borrar" style="width: 5%">
+								<b:commandButton value=""
+												 size="sm"
+												 style="height: 28px; width: 28px; background-image: url('/img/delete.png') !important;
+												 background-size: 26px; background-repeat: no-repeat"
+												 title="Borrar registro" />
+							</b:dataTableColumn>
+						</b:dataTable>
+
+                    </b:panel>
+                </h:form>
+                <!--Formulario principal-->
+
+
+                <!--Diálogo para agregar-->
+                <h:form id="frmAgregar">
+
+                    <p:dialog id="dialogo" widgetVar="dlgAgregar"
+                              header="Agregar nuevo registro" showEffect="clip"
+                              hideEffect="explode" resizable="false" responsive="true"
+                              width="600">
+                        <b:panel id="pnlAgregar">
+                            <b:messages id="msg" showDetail="true"/>
+                            <b:panelGrid id="panelAgregar" size="lg"
+										 colSpans="3,9"
+										 style="margin: 0 auto">
+
+                                <h:outputLabel for="nombre" value="Nombre del Libro" />
+                                <b:inputText id="nombre" value="#{libro.libro.nombre}"
+                                             required="true" requiredMessage="Requiere nombre del libro"
+                                             style="width: 100%">
+                                    <b:message for="nombre" />
+                                </b:inputText>
+
+                                <h:outputLabel for="ap" value="Descripción" />
+                                <b:inputText id="ap" value="#{libro.libro.descripcion}"
+                                             required="true" requiredMessage="Requiere descripción del libro"
+                                             style="width: 100%">
+                                    <b:message for="ap" />
+                                </b:inputText>
+                            </b:panelGrid>
+						</b:panel>
+						<p:spacer width="510" height="5" />
+						<b:commandButton id="track"
+										 style="height: 50px; width: 50px; background-image: url('/img/save.png') !important;
+										 background-size: 50px; background-repeat: no-repeat"
+										 value="" update="pnlAgregar, msg" title="Guardar registro"
+										 actionListener="#{libro.guardar()}">
+						</b:commandButton>
+                    </p:dialog>
+                </h:form>
+                <!--Diálogo para agregar-->
+
+                <!-- INICIA FORMUALARIO PARA EDITAR -->
+                <h:form id="frmEditar">
+                    <b:growl id="msgEditar" showDetail="true" showSummary="true" />
+                    <p:dialog id="dialogoEditar"
+                              header="Editar registro de: #{control.ciclo1920.registro.catequizado.nombre} #{control.ciclo1920.registro.catequizado.apellidoPaterno} #{control.ciclo1920.registro.catequizado.apellidoMaterno} / Fecha: #{control.ciclo1920.fecha}"
+                              widgetVar="dlgEditar" resizable="true" showEffect="clip"
+                              hideEffect="fold" width="600" style="font-size: 13px">
+                        <b:panelGrid id="pnlEditar" size="lg"
+									 colSpans="3,9"
+									 style="margin: 0 auto">
+                            <h:outputLabel for="nombre" value="Nombre del Libro" />
+                            <b:inputText id="nombre" value="#{libro.libro.nombre}"
+                                         required="true" requiredMessage="Requiere nombre del libro"
+                                         style="width: 100%">
+                                <b:message for="nombre" />
+                            </b:inputText>
+
+                            <h:outputLabel for="ap" value="Descripción" />
+                            <b:inputText id="ap" value="#{libro.libro.descripcion}"
+                                         required="true" requiredMessage="Requiere descripción del libro"
+                                         style="width: 100%">
+                                <b:message for="ap" />
+                            </b:inputText>
+
+                        </b:panelGrid>
+                        <br></br>
+                      	<p:spacer width="510" height="5" />
+                        <b:commandButton value=""
+                                         style="height:
+                                         50px; width: 50px; background-image:
+                                         url('/img/save.png') !important;
+                                         background-size: 50px; background-repeat:
+                                         no-repeat"
+                                         title="Actualizar registro"
+                                         actionListener="#{libro.actualizar()}"
+                                         oncomplete="PF('dlgEditar').hide()" update="frmPrincipal" />
+                    </p:dialog>
+                </h:form>
+                <!-- TERMINA FORMUALARIO PARA EDITAR -->
+
+
+            </ui:define>
+
+
+        </ui:composition>
+    </body>
+</html>
