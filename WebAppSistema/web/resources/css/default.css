@@ -10,7 +10,7 @@ body {
 }
 
 h1  {
-   font-family: 'Titillium Web', sans-serif;
+    font-family: 'Titillium Web', sans-serif;
     font-size:  25px !important;
     font-weight: bold;
     margin: 10px;
@@ -40,20 +40,21 @@ h3 {
 
 a:link, a:visited {
     /**color: #045491;**/
-    font-weight : bold;
-    text-decoration: none;
+    /*    font-weight : bold;*/
+    color: #011c35 !important
+        text-decoration: none;
 }
 
 a:link:hover, a:visited:hover  {
-    color: #045491;
+    color: #011c35 !important;
     font-weight : bold;
     text-decoration : underline;
 }
 
 .ui-datatable-even{
-	background:  #d3d7cf;
+    background:  #d3d7cf;
 }
 
 .ui-datatable-odd{
-	background: #babdb6;
+    background: #babdb6;
 }

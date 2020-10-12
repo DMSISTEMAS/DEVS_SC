@@ -21,36 +21,23 @@
         <h:body>
 
             <div id="top">
-<!--                <div id="menuPrincipal">-->
-                    <b:navBar brand="Home" brandHref="#" fluid="true" inverse="false">
+                <div id="menuPrincipal">
+                    <b:navBar brand="" brandHref="#" fluid="true" inverse="true">
                         <b:navbarLinks>
-                            <b:navLink value="Control" outcome="/Views/Control"/>
-                            <b:dropMenu value="Administrar" iconAwesome="birthday-cake">
-                                <b:navLink value="Catequista" outcome="/Views/Catequista"/>
-                                <b:navLink value="Alumno" outcome="/Views/Catequizado"/>
-                                <b:navLink value="Libro" outcome="/Views/Libro"/>
-                                <b:navLink value="Horario" outcome="/Views/Horario"/>
-                                <b:navLink value="Parroco" outcome="/Views/Parroco"/>
-                                <b:navLink header="Nav header"></b:navLink>
-                                <b:navLink value="Separated link" href="#"></b:navLink>
-                                <b:dropMenu value="" iconAwesome="birthday-cake" iconAlign="right">
-                                    <b:navLink value="You can nest menus" href="#"></b:navLink>
-                                    <b:dropMenu value="Nested sub-submenu">
-                                        <b:navLink value="... as deep as ..." href="#"></b:navLink>
-                                        <b:dropMenu value="Nested sub-sub-submenu">
-                                            <b:navLink value="... you want!" href="#"></b:navLink>
-                                        </b:dropMenu>
-                                    </b:dropMenu>
-
-                                </b:dropMenu>
-
+                            <b:dropMenu value="MENÚ" iconAwesome="bars">
+                                <b:navLink value="Administración de Asistencia Catecismo" outcome="/Views/Control" iconAwesome="calendar"/>
+                                <b:navLink value="Administración de Catequizandos" outcome="/Views/Catequizado" iconAwesome="users"/>
+                                <b:navLink value="Administración de Calificaciones" outcome="/Views/Calificacion" iconAwesome="graduation-cap"/>
+                                <b:navLink value="Administración de Libros" outcome="/Views/Libro" iconAwesome="book"/>
+                                <b:navLink value="Administración de Horarios" outcome="/Views/Horario" iconAwesome="calendar"/>
+                                <b:navLink value="Administración de Catequistas" outcome="/Views/Catequista" iconAwesome="users"/>
+                                <b:navLink value="Administración de Parroco" outcome="/Views/Parroco" iconAwesome="cross"/>
                             </b:dropMenu>
 
                         </b:navbarLinks>
 
                         <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks>
                         <b:navbarLinks pull="right" styleClass="hidden-xs">
-                            <b:navLink value="Link" href="#"></b:navLink>
                             <b:dropMenu value="Dropdown">
                                 <b:navLink value="Action" href="#"></b:navLink>
                                 <b:navLink value="Another action" href="#"></b:navLink>
@@ -63,7 +50,7 @@
                         </b:navbarLinks>
                     </b:navBar>
 
-<!--                </div>-->
+                </div>
                 <ui:insert name="top">
 
                 </ui:insert>
