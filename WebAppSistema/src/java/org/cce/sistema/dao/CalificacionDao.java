@@ -6,7 +6,7 @@ import org.cce.sistema.model.Calificacion;
 
 public interface CalificacionDao {
 
-	public List<Calificacion> lista();
+	public List<Calificacion> lista(int idHorario, int idLibro);
 
 	public void guardar(Calificacion calificacion);
 

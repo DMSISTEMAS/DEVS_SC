@@ -1,10 +1,11 @@
 package org.cce.sistema.imp;
 
 import java.util.List;
-
+import javax.faces.context.FacesContext;
 
 import org.cce.sistema.dao.CalificacionDao;
 import org.cce.sistema.model.Calificacion;
+import org.cce.sistema.model.Usuario;
 import org.cce.sistema.util.HibernateUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -14,15 +15,20 @@ import org.primefaces.context.RequestContext;
 public class CalificacionDaoImp implements CalificacionDao {
 
     RequestContext facesContext = RequestContext.getCurrentInstance();
+    Usuario us = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<Calificacion> lista() {
+    public List<Calificacion> lista(int idHorario, int idLibro) {
         List<Calificacion> lista = null;
         Session session = HibernateUtil.getSf().openSession();
         Transaction t = session.beginTransaction();
         try {
-            lista = session.createQuery("FROM Calificacion").list();
+            lista = session.createQuery("FROM Calificacion AS cal "
+                    + "WHERE cal.registro.horario.idHorario='" + idHorario + "' "
+                    + "AND cal.registro.libro.idLibro='" + idLibro + "'  "
+                    + "AND cal.registro.catequista.idCatequista='" + us.getIdCatequista() + "' "
+                    + "AND cal.registro.estado='Cursando'").list();
             t.commit();
             session.close();
         } catch (HibernateException e) {

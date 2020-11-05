@@ -22,107 +22,106 @@ import org.cce.sistema.model.Bitacora;
 @ViewScoped
 public class ControlCicloBean implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	private Bitacora ciclo1920;
-	private List<Bitacora> listaPorSemana;
-	private String semana;
-	private String idHorario;
-	private int idLibro;
-	private List<SelectItem> listaSemanas;
-	private List<SelectItem> listaLibros;
-	private List<SelectItem> listaHorarios;
+    private static final long serialVersionUID = 1L;
+    private Bitacora ciclo1920;
+    private List<Bitacora> listaPorSemana;
+    private String semana;
+    private String idHorario;
+    private int idLibro;
+    private List<SelectItem> listaSemanas;
+    private List<SelectItem> listaLibros;
+    private List<SelectItem> listaHorarios;
 
-	public ControlCicloBean() {
-		this.ciclo1920 = new Bitacora();
-		this.listaPorSemana = new ArrayList<>();
-		this.listaSemanas = new ArrayList<>();
-		this.listaLibros = new ArrayList<>();
-		this.listaHorarios = new ArrayList<>();
-	}
+    public ControlCicloBean() {
+        this.ciclo1920 = new Bitacora();
+        this.listaPorSemana = new ArrayList<>();
+        this.listaSemanas = new ArrayList<>();
+        this.listaLibros = new ArrayList<>();
+        this.listaHorarios = new ArrayList<>();
+    }
 
-	public Bitacora getCiclo1920() {
-		return ciclo1920;
-	}
+    public Bitacora getCiclo1920() {
+        return ciclo1920;
+    }
 
-	public void setCiclo1920(Bitacora ciclo1920) {
-		this.ciclo1920 = ciclo1920;
-	}
+    public void setCiclo1920(Bitacora ciclo1920) {
+        this.ciclo1920 = ciclo1920;
+    }
 
-	public List<Bitacora> getListaPorSemana() {
-		return listaPorSemana;
-	}
+    public List<Bitacora> getListaPorSemana() {
+        return listaPorSemana;
+    }
 
-	public String getSemana() {
-		return semana;
-	}
+    public String getSemana() {
+        return semana;
+    }
 
-	public void setSemana(String semana) {
-		this.semana = semana;
-	}
+    public void setSemana(String semana) {
+        this.semana = semana;
+    }
 
-	public String getIdHorario() {
-		return idHorario;
-	}
+    public String getIdHorario() {
+        return idHorario;
+    }
 
-	public void setIdHorario(String idHorario) {
-		this.idHorario = idHorario;
-	}
+    public void setIdHorario(String idHorario) {
+        this.idHorario = idHorario;
+    }
 
-	public int getIdLibro() {
-		return idLibro;
-	}
+    public int getIdLibro() {
+        return idLibro;
+    }
 
-	public void setIdLibro(int idLibro) {
-		this.idLibro = idLibro;
-	}
+    public void setIdLibro(int idLibro) {
+        this.idLibro = idLibro;
+    }
 
-	public void actualizar() {
-		CicloRegDao cDao = new CicloRegDaoImp();
-		cDao.actualizar(ciclo1920);
-		ciclo1920 = new Bitacora();
-	}
+    public void actualizar() {
+        CicloRegDao cDao = new CicloRegDaoImp();
+        cDao.actualizar(ciclo1920);
+        ciclo1920 = new Bitacora();
+    }
 
-	public List<Bitacora> listaPorSemana() {
-		CicloControlDao cDao = new CicloControlDaoImp();
-		String datoHorario[];
-		datoHorario = idHorario.split("_");
-		String datoSemana[];
-		datoSemana = semana.split("_");
-		this.listaPorSemana = cDao.listarPorSemana(Integer.valueOf(datoHorario[1]), idLibro,
-				Integer.valueOf(datoSemana[1]));
-		return listaPorSemana;
-	}
+    public List<Bitacora> listaPorSemana() {
+        CicloControlDao cDao = new CicloControlDaoImp();
+        String datoHorario[];
+        datoHorario = idHorario.split("_");
+        String datoSemana[];
+        datoSemana = semana.split("_");
+        this.listaPorSemana = cDao.listarPorSemana(Integer.valueOf(datoHorario[1]), idLibro,
+                Integer.valueOf(datoSemana[1]));
+        return listaPorSemana;
+    }
 
-	public List<SelectItem> getListaSemanas() {
-		CicloControlDao cDao = new CicloControlDaoImp();
-		List<String> lista = cDao.listarSemanas();
-		for (int i = 0; i < lista.size(); i++) {
-			SelectItem sem = new SelectItem(lista.get(i));
-			this.listaSemanas.add(sem);
-		}
+    public List<SelectItem> getListaSemanas() {
+        CicloControlDao cDao = new CicloControlDaoImp();
+        List<String> lista = cDao.listarSemanas();
+        for (int i = 0; i < lista.size(); i++) {
+            SelectItem sem = new SelectItem(lista.get(i));
+            this.listaSemanas.add(sem);
+        }
 
-		return listaSemanas;
-	}
+        return listaSemanas;
+    }
 
-	public List<SelectItem> getListaLibros() {
-		LibroDao lDao = new LibroDaoImp();
-		List<Integer> lista = lDao.listaDeLisbros();
-		for (int i = 0; i < lista.size(); i++) {
-			SelectItem lib = new SelectItem(lista.get(i));
-			this.listaLibros.add(lib);
+    public List<SelectItem> getListaLibros() {
+        LibroDao lDao = new LibroDaoImp();
+        List<Integer> lista = lDao.listaDeLisbros();
+        for (int i = 0; i < lista.size(); i++) {
+            SelectItem lib = new SelectItem(lista.get(i));
+            this.listaLibros.add(lib);
+        }
+        return listaLibros;
+    }
 
-		}
-		return listaLibros;
-	}
-
-	public List<SelectItem> getListaHorarios() {
-		HorarioDao hDao = new HorarioDaoImp();
-		List<String> lista = hDao.listaDeHorarios();
-		for (int i = 0; i < lista.size(); i++) {
-			SelectItem hor = new SelectItem(lista.get(i));
-			this.listaHorarios.add(hor);
-		}
-		return listaHorarios;
-	}
+    public List<SelectItem> getListaHorarios() {
+        HorarioDao hDao = new HorarioDaoImp();
+        List<String> lista = hDao.listaDeHorarios();
+        for (int i = 0; i < lista.size(); i++) {
+            SelectItem hor = new SelectItem(lista.get(i));
+            this.listaHorarios.add(hor);
+        }
+        return listaHorarios;
+    }
 
 }

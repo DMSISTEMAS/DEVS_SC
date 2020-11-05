@@ -22,15 +22,17 @@
             <ui:define name="content">
                 <!--Barra de tareas-->
                 <h:form>
-                    <b:panel id="topbar"  style="margin: 0 auto; text-align: center; font-size: 12px; font-family: 'Barlow', sans-serif">
+                    <b:panel title="ADMINISTRACIÓN DE CALIFICACIONES-CICLO ESCOLAR 2019-2020" collapsible="true"
+                             look="primary" style="margin: 0 auto; text-align: center; font-size: 12px; font-family: 'Barlow', sans-serif">
                         <table border="0">
                             <thead>
                                 <tr>
-                                    <th>NUEVO</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
+                                    <th style="width: 10px"></th>
+                                    <th>Horario</th>
+                                    <th style="width: 10px"></th>
+                                    <th>Libro</th>
+                                    <th style="width: 10px"></th>
+                                    <th>Buscar</th>
                                     <th></th>
                                     <th></th>
                                     <th></th>
@@ -38,14 +40,28 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td> <b:commandButton value="" oncomplete="PF('dlgAgregar').show()"
-                                                          style="height: 50px; width: 50px; background-image: url('/img/calendar.png') !important; 
-                                                          background-size: 48px; background-repeat: no-repeat"
-                                                          title="Agregar nuevo registro" update="frmAgregar:pnlAgregar"/></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td style="width: 10px"></td>
+                                    <td><b:selectOneMenu id="horario"
+                                                         title="Selecciona horario" value="#{calificacion.idHorario}"
+                                                         style="width:150px">
+                                            <f:selectItem itemLabel="Selecione horario" itemValue="" />
+                                            <f:selectItems value="#{calificacion.listaHorarios}" />
+                                        </b:selectOneMenu></td>
+                                    <td style="width: 10px"></td>
+                                    <td><b:selectOneMenu id="libro" title="Selecciona libro"
+                                                         value="#{calificacion.idLibro}" style="width:150px">
+                                            <f:selectItem itemLabel="Selecione libro" itemValue="" />
+                                            <f:selectItems value="#{calificacion.listaLibros}" />
+                                        </b:selectOneMenu></td>
+                                    <td style="width: 10px"></td>
+                                    <td>
+                                        <b:commandButton value="" 
+                                                         update="frmPrincipal"
+                                                         actionListener="#{calificacion.listado()}"
+                                                         style="height: 38px; width: 38px; background-image: url('/img/search.png') !important;
+                                                         background-size: 36px; background-repeat: no-repeat"
+                                                         title="Buscar" 
+                                                         onclick="ajax:blockUIBean.waitFiveSeconds()"/></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -72,7 +88,7 @@
                             <b:dataTableColumn value="#{var.registro.catequizado.apellidoPaterno}" label="Ap. Paterno"/>
                             <b:dataTableColumn value="#{var.registro.catequizado.apellidoMaterno}" label="Ap. Materno"/>
                             <b:dataTableColumn value="#{var.registro.libro.nombre}" label="Libro"/>
-                            <b:dataTableColumn value="#{var.total}" label="Calificacion"/>
+                            <b:dataTableColumn value="#{var.total}" label="Calificacion final"/>
                             <b:dataTableColumn value="#{var.estado}" label="Estatus"/>
                             <b:dataTableColumn value="#{var.asistencia}" label="Asistencia"/>
                             <b:dataTableColumn value="#{var.tareas}" label="Tareas"/>

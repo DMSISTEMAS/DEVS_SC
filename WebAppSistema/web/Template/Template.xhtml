@@ -35,21 +35,10 @@
                             </b:dropMenu>
 
                         </b:navbarLinks>
-
-                        <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks>
-                        <b:navbarLinks pull="right" styleClass="hidden-xs">
-                            <b:dropMenu value="Dropdown">
-                                <b:navLink value="Action" href="#"></b:navLink>
-                                <b:navLink value="Another action" href="#"></b:navLink>
-                                <b:navLink value="Something else here" href="#"></b:navLink>
-                                <b:navLink></b:navLink>
-                                <b:navLink header="Nav header"></b:navLink>
-                                <b:navLink value="Separated link" href="#"></b:navLink>
-                                <b:navLink value="One more separated link" href="#"></b:navLink>
-                            </b:dropMenu>
-                        </b:navbarLinks>
+                        
+                        <b:navbarLinks pull="right"><b:navLink value="Sesión iniciada: #{usuario.usuario.nombre} -  #{usuario.usuario.perfil}" href="#"></b:navLink></b:navbarLinks>
+                        
                     </b:navBar>
-
                 </div>
                 <ui:insert name="top">
 

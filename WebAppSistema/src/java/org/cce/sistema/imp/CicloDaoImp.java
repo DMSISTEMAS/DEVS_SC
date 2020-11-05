@@ -32,6 +32,7 @@ public class CicloDaoImp implements CicloDao {
 	}
 
 	@Override
+        @SuppressWarnings("null")
 	public void guardar(Ciclo ciclo) {
 		Session session = null;
 		try {
