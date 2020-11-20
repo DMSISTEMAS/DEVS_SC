@@ -22,8 +22,8 @@ public class CalificacionBean implements Serializable {
     private List<Calificacion> lista;
     private int idLibro;
     private String idHorario;
-    private List<SelectItem> listaLibros;
-    private List<SelectItem> listaHorarios;
+    private final List<SelectItem> listaLibros;
+    private final List<SelectItem> listaHorarios;
 
     public CalificacionBean() {
         this.calificacion = new Calificacion();
@@ -58,9 +58,9 @@ public class CalificacionBean implements Serializable {
 
     public List<SelectItem> getListaLibros() {
         LibroDao lDao = new LibroDaoImp();
-        List<Integer> lista = lDao.listaDeLisbros();
-        for (int i = 0; i < lista.size(); i++) {
-            SelectItem lib = new SelectItem(lista.get(i));
+        List<Integer> listas = lDao.listaDeLisbros();
+        for (int i = 0; i < listas.size(); i++) {
+            SelectItem lib = new SelectItem(listas.get(i));
             this.listaLibros.add(lib);
         }
         return listaLibros;

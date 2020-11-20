@@ -33,8 +33,8 @@
                                     <th>Libro</th>
                                     <th style="width: 10px"></th>
                                     <th>Buscar</th>
-                                    <th></th>
-                                    <th></th>
+                                    <th style="width: 10px"></th>
+                                    <th>Calificar</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -62,8 +62,15 @@
                                                          background-size: 36px; background-repeat: no-repeat"
                                                          title="Buscar" 
                                                          onclick="ajax:blockUIBean.waitFiveSeconds()"/></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td style="width: 10px"></td>
+                                    <td>
+                                        <b:commandButton value="" 
+                                                         update="frmPrincipal"
+                                                         actionListener="#{calificacion.listado()}"
+                                                         style="height: 38px; width: 38px; background-image: url('/img/search.png') !important;
+                                                         background-size: 36px; background-repeat: no-repeat"
+                                                         title="Buscar" 
+                                                         onclick="ajax:blockUIBean.waitFiveSeconds()"/></td>
                                     <td></td>
                                 </tr>
                             </tbody>
@@ -88,14 +95,20 @@
                             <b:dataTableColumn value="#{var.registro.catequizado.apellidoPaterno}" label="Ap. Paterno"/>
                             <b:dataTableColumn value="#{var.registro.catequizado.apellidoMaterno}" label="Ap. Materno"/>
                             <b:dataTableColumn value="#{var.registro.libro.nombre}" label="Libro"/>
-                            <b:dataTableColumn value="#{var.total}" label="Calificacion final"/>
-                            <b:dataTableColumn value="#{var.estado}" label="Estatus"/>
-                            <b:dataTableColumn value="#{var.asistencia}" label="Asistencia"/>
-                            <b:dataTableColumn value="#{var.tareas}" label="Tareas"/>
-                            <b:dataTableColumn value="#{var.extras}" label="Calif. Extra"/>
-                            <b:dataTableColumn value="#{var.catequesis}" label="Catequesis"/>
+                            <b:dataTableColumn value="#{var.registro.porcentaje.misa}" label="% Misa"/>
+                            <b:dataTableColumn value="#{var.registro.porcentaje.tareas}" label="% Tarea"/>
+                            <b:dataTableColumn value="#{var.registro.porcentaje.extras}" label="% Participaciones"/>
+                            <b:dataTableColumn value="#{var.registro.porcentaje.catequesis}" label="% C. Familiar"/>
+                            <b:dataTableColumn value="#{var.registro.porcentaje.asistencia}" label="% Asistencia"/>
+                            <b:dataTableColumn value="#{var.registro.porcentaje.evaluacion}" label="% Evaluación"/>
                             <b:dataTableColumn value="#{var.misa}" label="Misa"/>
+                            <b:dataTableColumn value="#{var.tareas}" label="Tarea"/>
+                            <b:dataTableColumn value="#{var.extras}" label="Participaciones"/>
+                            <b:dataTableColumn value="#{var.catequesis}" label="C. Familiar"/>
+                            <b:dataTableColumn value="#{var.asistencia}" label="Asistencia"/>
                             <b:dataTableColumn value="#{var.evaluacion}" label="Evaluacion"/>
+                            <b:dataTableColumn value="#{var.total}" label="Calificación final"/>
+                            <b:dataTableColumn value="#{var.estado}" label="Estatus"/>
                             <b:dataTableColumn value="#{var.observaciones}" label="Observaciones"/>
 
                             <b:dataTableColumn value="" label="Actualizar" style="width: 4%">
