@@ -53,7 +53,7 @@ WHERE
 	<field name="catequizado_apellidoPaterno" class="java.lang.String"/>
 	<field name="catequizado_apellidoMaterno" class="java.lang.String"/>
 	<field name="catequizado_foto" class="java.io.InputStream"/>
-	<field name="registro_idRegistro" class="java.lang.Integer"/>
+	<field name="registro_idRegistro" class="java.lang.String"/>
 	<field name="registro_idCiclo" class="java.lang.Integer"/>
 	<field name="registro_idParroquia" class="java.lang.Integer"/>
 	<field name="ciclo_idCiclo" class="java.lang.Integer"/>
@@ -78,6 +78,9 @@ WHERE
 	<field name="libro_nombre" class="java.lang.String"/>
 	<field name="libro_descripcion" class="java.lang.String"/>
 	<field name="parroquia_logo" class="java.io.InputStream"/>
+	<variable name="ID" class="java.lang.String">
+		<variableExpression><![CDATA[$F{catequizado_idCatequizado}+"xT09e7c26ec42188dd737e99f6c74c30e26933b25be184da6f09ee3bc841e8992efafce53c4d23a138bbfbc56fa2355f91c00824a4b97a791027f7eb0d697fec5da"]]></variableExpression>
+	</variable>
 	<group name="registro_idRegistro">
 		<groupExpression><![CDATA[$F{registro_idRegistro}]]></groupExpression>
 	</group>
@@ -90,7 +93,7 @@ WHERE
 				<reportElement x="45" y="120" width="103" height="108" uuid="463e3c32-7c82-4701-b622-e19ef08b749f"/>
 				<imageExpression><![CDATA[com.google.zxing.client.j2se.MatrixToImageWriter.toBufferedImage(
 
-    new com.google.zxing.qrcode.QRCodeWriter().encode($F{registro_idRegistro}  +"xTo" +"4852015df6b8f58b4ae6235bb5b9958e8d7bb45fcdb15dc1db91cd8fdabb461862462ad72d16b44c199801b5e40575ffd544eda0d8c011a58e6b4b87640c92a2", com.google.zxing.BarcodeFormat.QR_CODE, 300, 300))]]></imageExpression>
+    new com.google.zxing.qrcode.QRCodeWriter().encode($V{ID}, com.google.zxing.BarcodeFormat.QR_CODE, 300, 300))]]></imageExpression>
 			</image>
 			<textField>
 				<reportElement x="0" y="91" width="198" height="27" forecolor="#000033" uuid="ce1975b9-ce0e-4f63-9ca3-2595d151aae3"/>
