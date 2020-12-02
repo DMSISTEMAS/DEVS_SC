@@ -9,18 +9,17 @@
 <h:head>
 	<title>Login</title>
 	<link href="/resources/css/modal.css" rel="stylesheet" type="text/css" />
-	<link
+<!--	<link
 		href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300display=swap;"
-		rel="stylesheet" />
+		rel="stylesheet" />-->
 </h:head>
 
-<body style="background-image: url('/img/blue.jpg');">
+<body style="background-image: url('/img/fondo.jpg');">
 	<button class="hover"
 		onclick="document.getElementById('id01').style.display = 'block'"
 		title="Iniciar sesión">
 		<img src="/img/espiritu.png" style="height: 100px; width: 100px;" />
 	</button>
-	<div class="modal-center">PARROQUIA DE SAN PEDRO APOSTOL</div>
 
 	<div id="id01" class="modal">
 		<h:form id="formLogin" class="modal-content animate"
@@ -39,7 +38,7 @@
 					onclick="document.getElementById('id01').style.display = 'none'"
 					class="close" title="Cerrar ventana">&times;</span> <img
 					src="img/sanpedro.png" alt="Login" class="avatar" />
-				<h3>Parroquía de San Pedro Apóstol</h3>
+				<h3>PARROQUIA SAN PEDRO APÓSTOL</h3>
 				<br></br> <label for="uname"><b>Usuario</b></label> <br /> <input
 					type="text" name="uname" jsf:value="#{usuario.usuario.nickname}"
 					placeholder="Ingresa tu usuario" required="true" label="username"
