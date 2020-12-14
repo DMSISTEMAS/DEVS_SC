@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="recibo" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c4d6ccc7-e963-4763-8fc9-c5bacb12d6e3">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<property name="ireport.zoom" value="1.3310000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="76"/>
+	<parameter name="IDREGISTRO" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT db_cce.catequizado.nombre,
+	db_cce.catequizado.`apellidoPaterno`,
+	db_cce.catequizado.`apellidoMaterno`,
+	db_cce.catequizado.telefono,
+	db_cce.catequizado.`nombrePapa`,
+	db_cce.catequizado.`nombreMama`,
+	db_cce.registro.costo,
+	db_cce.horario.nombre AS horario_nombre,
+	db_cce.horario.`inicioCiclo`,
+	db_cce.libro.nombre AS nombre_libro,
+	db_cce.libro.descripcion,
+	db_cce.registro.`idRegistro`,
+	db_cce.registro.alta
+FROM db_cce.registro
+	INNER JOIN db_cce.catequizado ON
+	 db_cce.registro.`idCatequizado` = db_cce.catequizado.`idCatequizado`
+	INNER JOIN db_cce.horario ON
+	 db_cce.registro.`idHorario` = db_cce.horario.`idHorario`
+	INNER JOIN db_cce.libro ON
+	 db_cce.registro.`idLibro` = db_cce.libro.`idLibro`
+	 WHERE db_cce.registro.`idCatequizado`= $P{IDREGISTRO}]]>
+	</queryString>
+	<field name="nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catequizado"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apellidoPaterno" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="apellidoPaterno"/>
+		<property name="com.jaspersoft.studio.field.label" value="apellidoPaterno"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catequizado"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apellidoMaterno" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="apellidoMaterno"/>
+		<property name="com.jaspersoft.studio.field.label" value="apellidoMaterno"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catequizado"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefono" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="telefono"/>
+		<property name="com.jaspersoft.studio.field.label" value="telefono"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catequizado"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombrePapa" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombrePapa"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombrePapa"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catequizado"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombreMama" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombreMama"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombreMama"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catequizado"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="costo" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="costo"/>
+		<property name="com.jaspersoft.studio.field.label" value="costo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="registro"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="horario_nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.label" value="horario_nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="horario"/>
+	</field>
+	<field name="inicioCiclo" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="inicioCiclo"/>
+		<property name="com.jaspersoft.studio.field.label" value="inicioCiclo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="horario"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre_libro" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombre_libro"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="libro"/>
+	</field>
+	<field name="descripcion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="descripcion"/>
+		<property name="com.jaspersoft.studio.field.label" value="descripcion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="libro"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idRegistro" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="idRegistro"/>
+		<property name="com.jaspersoft.studio.field.label" value="idRegistro"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="registro"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alta" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="alta"/>
+		<property name="com.jaspersoft.studio.field.label" value="alta"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="registro"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<group name="idRegistro">
+		<groupExpression><![CDATA[$F{idRegistro}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="610" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="42" width="334" height="30" uuid="942422e3-3623-4238-813b-43b8a8f4a426"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="21" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RECIBO DE PAGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="334" y="42" width="104" height="30" uuid="affad18d-4e2f-47fc-acd0-25811c4227df"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="21" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FOLIO]]></text>
+			</staticText>
+			<textField pattern="00000">
+				<reportElement x="438" y="42" width="134" height="30" uuid="813a9e0a-d459-4e4c-a1a7-465b5ec80391"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idRegistro}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="92" width="130" height="20" uuid="586b9f0c-c41f-4326-a06f-2c51b79535eb"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[La cantidad de:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="72" width="442" height="20" uuid="930098ea-ff3f-488e-a827-bb1240063db6"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre} +" "+$F{apellidoPaterno}+" "+$F{apellidoMaterno}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement mode="Transparent" x="226" y="112" width="346" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="1304a6c0-2e8c-481e-8c49-c91252e1d689"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="12" isBold="false" isItalic="true" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_libro} + " "+$F{descripcion}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEE, d MMM yyyy HH:mm:ss Z" isBlankWhenNull="false">
+				<reportElement mode="Transparent" x="226" y="132" width="346" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="225e2354-b2d9-45f4-ae24-bade41d2290c"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="12" isBold="false" isItalic="true" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{alta}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #,##0.0000">
+				<reportElement x="130" y="92" width="442" height="20" uuid="67550e59-6fcf-4060-a71c-ee91921dda3c"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{costo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="132" width="226" height="20" uuid="09486241-c3f6-4948-941d-8dccebdd08ce"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de registro en sistema: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="112" width="226" height="20" uuid="c411e92d-fe9b-49fb-9830-66ecf94fe953"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Por concepto de inscripción al:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="72" width="130" height="20" uuid="c968d372-f65a-4586-9bc0-da07974e4e58"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Recibí de:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="152" width="226" height="20" uuid="f8d17b38-17f7-441c-b088-30d25abda03c"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Recibido por:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="310" width="572" height="1" uuid="c1cccf1b-66b8-49c3-b319-4d2df539f8d0"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="247" width="226" height="1" uuid="8b3b21a0-45bc-4c22-8493-c7e275518fbe"/>
+			</line>
+			<rectangle>
+				<reportElement x="226" y="172" width="326" height="115" uuid="b25f80ff-811e-4fef-bfb8-25dbeddf84bd"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="226" y="152" width="346" height="20" uuid="42b7fec7-23f9-45c3-a5e3-7225c5f4d108"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sello de la Parroquia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="12" width="572" height="20" uuid="a512d9cb-2c1c-47f1-b42f-8ee9d58f1543"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[PARROQUIA SAN PEDRO APÓSTOL, SAN PEDRO ZICTEPEC, TENANGO DEL VALLE.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="552" y="172" width="20" height="115" forecolor="#000000" backcolor="#FFFFFF" uuid="b3b3e62a-d6d6-4035-b2f5-fe350e9934b0"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left"/>
+				<text><![CDATA[COPIA USUARIO]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement mode="Transparent" x="226" y="432" width="346" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="e3c2b59f-c74a-4a6d-b11d-88d26ac0209a"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="12" isBold="false" isItalic="true" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_libro} + " "+$F{descripcion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="332" width="572" height="20" uuid="8055f5ef-98c9-4de2-a33e-24c2bf847f5b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[PARROQUIA SAN PEDRO APÓSTOL, SAN PEDRO ZICTEPEC, TENANGO DEL VALLE.]]></text>
+			</staticText>
+			<textField pattern="EEE, d MMM yyyy HH:mm:ss Z" isBlankWhenNull="false">
+				<reportElement mode="Transparent" x="226" y="452" width="346" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="b62b2d06-a0f8-40e3-bf13-c14887582bcb"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="12" isBold="false" isItalic="true" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{alta}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="362" width="334" height="30" uuid="7cccb678-5d13-42c1-910d-22c84abf769a"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="21" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RECIBO DE PAGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="472" width="226" height="20" uuid="b44a39de-5bba-42a5-85f6-7e7e8b9192b0"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Recibido por:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="412" width="130" height="20" uuid="324b3ad1-27c6-4eef-94ad-1918072f2790"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[La cantidad de:]]></text>
+			</staticText>
+			<textField pattern="00000">
+				<reportElement x="438" y="362" width="134" height="30" uuid="4aedce62-74cc-4a68-be10-dfb608144bf9"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idRegistro}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="226" y="492" width="326" height="115" uuid="ace77914-529e-41a1-9397-88508f38b53f"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="334" y="362" width="104" height="30" uuid="fc82f3d1-00d7-4aeb-84b5-41fb4796a760"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="21" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FOLIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="226" y="472" width="346" height="20" uuid="60494814-dd09-4caf-b8a1-bab5acaddc3b"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sello de la Parroquia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="452" width="226" height="20" uuid="f987a921-db8f-4307-b58d-ee56945c7456"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de registro en sistema: ]]></text>
+			</staticText>
+			<textField pattern="$ #,##0.0000">
+				<reportElement x="130" y="412" width="442" height="20" uuid="ee0f1aea-c2b4-445b-a55a-34ad85c3071b"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{costo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="392" width="130" height="20" uuid="091df780-4f4f-4252-b896-8aca8aa30a32"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Recibí de:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="567" width="226" height="1" uuid="09937393-00c6-4dbd-9a47-c80d7ec36c96"/>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="552" y="492" width="20" height="115" forecolor="#000000" backcolor="#FFFFFF" uuid="2642d594-1315-4e7d-954a-d14ac44a7838"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left"/>
+				<text><![CDATA[COPIA PARROQUIA]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="392" width="442" height="20" uuid="efaf36c2-491d-4ff7-a3c4-358113201a7f"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre} +" "+$F{apellidoPaterno}+" "+$F{apellidoMaterno}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="432" width="226" height="20" uuid="b2e63c74-ea8e-4bbe-84e4-45672f198128"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Por concepto de inscripción al:]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+</jasperReport>

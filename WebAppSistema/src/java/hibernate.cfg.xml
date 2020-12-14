@@ -11,7 +11,6 @@
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.current_session_context_class">thread</property>
     <property name="hibernate.enable_lazy_load_no_trans">true</property>
-    <mapping resource="org/cce/sistema/model/Ciclo.hbm.xml"/>
     <mapping resource="org/cce/sistema/model/Catequista.hbm.xml"/>
     <mapping resource="org/cce/sistema/model/Direccion.hbm.xml"/>
     <mapping resource="org/cce/sistema/model/Horario.hbm.xml"/>

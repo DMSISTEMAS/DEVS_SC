@@ -77,7 +77,6 @@ public class CalificacionBean implements Serializable {
     }
 
     public List<Calificacion> getLista() {
-
         return lista;
     }
 

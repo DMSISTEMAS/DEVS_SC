@@ -13,7 +13,6 @@ import javax.servlet.ServletContext;
 
 import org.cce.sistema.dao.CatequistaDao;
 import org.cce.sistema.dao.CatequizadoDao;
-import org.cce.sistema.dao.CicloDao;
 import org.cce.sistema.dao.CicloRegDao;
 import org.cce.sistema.dao.HorarioDao;
 import org.cce.sistema.dao.LibroDao;
@@ -22,7 +21,6 @@ import org.cce.sistema.dao.PorcentajeDao;
 import org.cce.sistema.dao.RegistroDao;
 import org.cce.sistema.imp.CatequistaDaoImp;
 import org.cce.sistema.imp.CatequizadoDaoImp;
-import org.cce.sistema.imp.CicloDaoImp;
 import org.cce.sistema.imp.CicloRegDaoImp;
 import org.cce.sistema.imp.HorarioDaoImp;
 import org.cce.sistema.imp.LibroDaoImp;
@@ -31,7 +29,6 @@ import org.cce.sistema.imp.PorcentajeDaoImp;
 import org.cce.sistema.imp.RegistroDaoImp;
 import org.cce.sistema.model.Catequista;
 import org.cce.sistema.model.Catequizado;
-import org.cce.sistema.model.Ciclo;
 import org.cce.sistema.model.Bitacora;
 import org.cce.sistema.model.Horario;
 import org.cce.sistema.model.Libro;
@@ -60,7 +57,6 @@ public class InscripcionBean implements Serializable {
     private String nombreCiclo;
     private String nombrePorcentaje;
     private List<String> maxVal;
-    private Ciclo ciclo;
     private Calendar calendar = Calendar.getInstance();
     private Bitacora bitacora;
     private Registro regCredencial;
@@ -76,7 +72,6 @@ public class InscripcionBean implements Serializable {
         this.horario = new Horario();
         this.parroco = new Parroco();
         this.maxVal = new ArrayList<>();
-        this.ciclo = new Ciclo();
         this.bitacora = new Bitacora();
         this.regCredencial = new Registro();
         this.porcentaje = new Porcentaje();
@@ -183,14 +178,6 @@ public class InscripcionBean implements Serializable {
         this.nombreCiclo = nombreCiclo;
     }
 
-    public Ciclo getCiclo() {
-        return ciclo;
-    }
-
-    public void setCiclo(Ciclo ciclo) {
-        this.ciclo = ciclo;
-    }
-
     public Calendar getCalendar() {
         return calendar;
     }
@@ -272,13 +259,6 @@ public class InscripcionBean implements Serializable {
         return resultNombre;
     }
 
-    public List<String> completeCiclo(String nombre) {
-        List<String> resultNombre = new ArrayList<>();
-        CicloDao cDao = new CicloDaoImp();
-        resultNombre = cDao.listarCiclo(nombre);
-        return resultNombre;
-    }
-
     public List<String> completePorcentaje(String nombre) {
         List<String> resultNombre = new ArrayList<>();
         PorcentajeDao cDao = new PorcentajeDaoImp();
@@ -318,12 +298,6 @@ public class InscripcionBean implements Serializable {
         parr = this.nombreParroquia.split("_");
         this.parroco.setIdParroco(Integer.parseInt(parr[1]));
         this.registro.setParroco(parroco);
-
-        // COLOCAMOS EL ID DEL CICLO
-        String[] cic;
-        cic = this.nombreCiclo.split("_");
-        this.ciclo.setIdCiclo(Integer.parseInt(cic[1]));
-        this.registro.setCiclo(ciclo);
 
         // COLOCAMOS EL ID DEL PORCENTAJE
         String[] por;
@@ -401,6 +375,14 @@ public class InscripcionBean implements Serializable {
         ServletContext servletContext = (ServletContext) facesContext.getExternalContext().getContext();
         String ruta = servletContext.getRealPath("/QR/credencial.jasper");
         credencial.getCredencial(ruta, idReg);
+        FacesContext.getCurrentInstance().responseComplete();
+    }
+    public void imprimirRecibo(String idReg) {
+        Recibo recibo = new Recibo();
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        ServletContext servletContext = (ServletContext) facesContext.getExternalContext().getContext();
+        String ruta = servletContext.getRealPath("/QR/recibo.jasper");
+        recibo.getRecibo(ruta, idReg);
         FacesContext.getCurrentInstance().responseComplete();
     }
 

@@ -14,9 +14,6 @@
         <many-to-one name="catequizado" class="org.cce.sistema.model.Catequizado" fetch="select">
             <column name="idCatequizado" />
         </many-to-one>
-        <many-to-one name="ciclo" class="org.cce.sistema.model.Ciclo" fetch="select">
-            <column name="idCiclo" />
-        </many-to-one>
         <many-to-one name="horario" class="org.cce.sistema.model.Horario" fetch="select">
             <column name="idHorario" />
         </many-to-one>

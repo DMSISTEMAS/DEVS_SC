@@ -43,7 +43,7 @@
                  
     <context-param>
         <param-name>BootsFaces_THEME</param-name>
-        <param-value>yeti</param-value>
+        <param-value>lumen</param-value>
     </context-param>
                  
     

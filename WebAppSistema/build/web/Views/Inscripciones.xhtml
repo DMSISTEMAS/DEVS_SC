@@ -74,13 +74,12 @@
 						<b:dataTable var="var" value="#{inscripcion.listaRegistro}">
 							<b:dataTableColumn value="#{var.catequizado.nombre} #{var.catequizado.apellidoPaterno} #{var.catequizado.apellidoMaterno}" />
 							<b:dataTableColumn value="#{var.libro.nombre}" label="Libro"/>
-							<b:dataTableColumn value="#{var.libro.nombre}" label="Horario" />
+							<b:dataTableColumn value="#{var.horario.nombre}" label="Ciclo" />
 							<b:dataTableColumn value="#{var.horario.dia} de #{var.horario.horaInicio} hrs. a #{var.horario.horaFin} hrs." label="Horario" />
 							<b:dataTableColumn value="#{var.catequista.nombre} #{var.catequista.apellidoPaterno} #{var.catequista.apellidoMaterno}" label="Catequista" />
 							<b:dataTableColumn value="#{var.parroco.parroquia}" label="Parroquia" />
 							<b:dataTableColumn value="#{var.idRegistro}" label="Folio recibo" />
 							<b:dataTableColumn value="#{var.costo}" label="Costo inscripción" />
-							<b:dataTableColumn value="#{var.ciclo.nombre}" label="Ciclo" />
 
 							<b:dataTableColumn label="Credencial" style="width: 4%">
 								<h:commandLink value="" target="_blank"
@@ -92,7 +91,7 @@
 
 							<b:dataTableColumn label="Recibo" style="width: 4%">
 								<h:commandLink value="" target="_blank"
-											   actionListener="#{inscripcion.imprimirCredencial(var.idRegistro)}">
+											   actionListener="#{inscripcion.imprimirRecibo(var.idRegistro)}">
 									<h:graphicImage value="/img/document.png"
 													style="height: 32px; width: 32px;" />
 								</h:commandLink>
@@ -193,17 +192,6 @@
                                              placeholder="Costo de inscripción">
                                     <b:message for="costo" />
                                 </b:inputText>
-
-                                <h:outputLabel value="Ciclo"
-                                               for="byNombreCiclo" />
-                                <p:autoComplete id="byNombreCiclo" size="55"
-                                                onfocus="javascript:this.select()"
-                                                placeholder="Ingresa p. ej AA o ZZ" dropdown="true"
-                                                value="#{inscripcion.nombreCiclo}"
-                                                completeMethod="#{inscripcion.completeCiclo}" required="true"
-                                                requiredMessage="Campo requerido">
-                                    <b:message for="byNombreCiclo" />
-                                </p:autoComplete>
 
                                 <h:outputLabel value="Ingresa porcentaje de calificaciones"
                                                for="byNombrePorcentaje" />

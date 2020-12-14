@@ -16,9 +16,6 @@
      registro.`idRegistro` AS registro_idRegistro,
      registro.`idCiclo` AS registro_idCiclo,
      registro.`idParroco` AS registro_idParroquia,
-     ciclo.`idCiclo` AS ciclo_idCiclo,
-     ciclo.`nombre` AS ciclo_nombre,
-     ciclo.`estatus` AS ciclo_estatus,
      horario.`idHorario` AS horario_idHorario,
      horario.`dia` AS horario_dia,
      horario.`horaInicio` AS horario_horaInicio,
@@ -40,7 +37,6 @@
      parroco.`logo` AS parroquia_logo
 FROM
      `catequizado` catequizado INNER JOIN `registro` registro ON catequizado.`idCatequizado` = registro.`idCatequizado`
-     INNER JOIN `ciclo` ciclo ON registro.`idCiclo` = ciclo.`idCiclo`
      INNER JOIN `horario` horario ON registro.`idHorario` = horario.`idHorario`
      INNER JOIN `parroco` parroco ON registro.`idParroco` = parroco.`idParroco`
      INNER JOIN `catequista` catequista ON registro.`idCatequista` = catequista.`idCatequista`
@@ -53,12 +49,9 @@ WHERE
 	<field name="catequizado_apellidoPaterno" class="java.lang.String"/>
 	<field name="catequizado_apellidoMaterno" class="java.lang.String"/>
 	<field name="catequizado_foto" class="java.io.InputStream"/>
-	<field name="registro_idRegistro" class="java.lang.String"/>
+	<field name="registro_idRegistro" class="java.lang.Integer"/>
 	<field name="registro_idCiclo" class="java.lang.Integer"/>
 	<field name="registro_idParroquia" class="java.lang.Integer"/>
-	<field name="ciclo_idCiclo" class="java.lang.Integer"/>
-	<field name="ciclo_nombre" class="java.lang.String"/>
-	<field name="ciclo_estatus" class="java.lang.Boolean"/>
 	<field name="horario_idHorario" class="java.lang.Integer"/>
 	<field name="horario_dia" class="java.lang.String"/>
 	<field name="horario_horaInicio" class="java.sql.Time"/>
@@ -147,7 +140,7 @@ WHERE
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
 					<font size="8" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["CICLO "+ $F{ciclo_nombre}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["CICLO "+ $F{horario_nombre}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="181" y="120" width="17" height="120" forecolor="#990033" uuid="07bfe7a9-e8ac-41d0-a9b8-c51df49c2e56"/>

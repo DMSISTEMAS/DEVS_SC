@@ -126,11 +126,11 @@
                     <p:dialog id="dialogo" widgetVar="dlgAgregar"
                               header="Agregar nuevo registro" showEffect="drop"
                               hideEffect="slide" resizable="true" responsive="true"
-                              style="font-size: 13px" width="800">
+                              style="font-size: 13px" width="800" height="600">
                         <b:panel id="pnlAgregar">
                             <b:messages id="msg" showDetail="true" />
                             <b:panelGrid id="panelAgregar" size="lg"
-                                         colSpans="3,9"
+                                         colSpans="2,10"
                                          style="margin: 0 auto">
 
                                 <h:outputLabel for="nombre" value="Nombre" />
@@ -184,14 +184,15 @@
                                 </b:inputText>
 
                                 <h:outputLabel for="fecha" value="Fecha de nacimiento" />
-                                <b:datepicker id="fecha" 
+                                <b:dateTimePicker id="fecha" 
                                               style="width: 300px;"
                                               value="#{catequizado.catequizado.fechaNacimiento}"
                                               required="true" 
                                               placeholder="Fecha de nacimiento"
+                                              show-time="false"
                                               requiredMessage="Requiere fecha de nacimiento">
                                     <b:message for="fecha" />
-                                </b:datepicker>
+                                </b:dateTimePicker>
 
                                 <h:outputLabel value="Ingresa Parroquia" 
                                                for="byBautismo" />
@@ -229,14 +230,15 @@
                                 <br></br>
 
                                 <h:outputLabel for="fechaBautismo" value="Fecha de Bautismo" />
-                                <b:datepicker id="fechaBautismo" 
+                                <b:dateTimePicker id="fechaBautismo" 
                                               style="width: 300px;"
                                               value="#{catequizado.catequizado.fechaBautismo}" 
                                               required="true"
+                                              show-time="false"
                                               placeholder="Fecha de Bautismo" 
                                               requiredMessage="Requiere fecha de Bautismo">
                                     <b:message for="fechaBautismo" />
-                                </b:datepicker>
+                                </b:dateTimePicker>
 
                                 <h:outputLabel for="papa" value="Nombre del Papá" />
                                 <b:inputText id="papa" style="width: 300px"
@@ -336,7 +338,7 @@
                                 <p:fileUpload value="#{catequizado.file}" mode="simple" />
                             </b:panelGrid>
                         </b:panel>
-                        <p:spacer width="710" height="20" /> 
+                        <p:spacer width="710" height="10" /> 
                         <b:commandButton id="guardar"
                                          style="height: 50px; width: 50px; background-image: url('/img/save.png') !important;
                                          background-size: 50px; background-repeat: no-repeat"
@@ -354,10 +356,12 @@
                     <p:dialog id="dialogoEditar" width="800"
                               header="Editar registro de: #{catequizado.catequizadoEditar.nombre} #{catequizado.catequizadoEditar.apellidoPaterno} #{catequizado.catequizadoEditar.apellidoMaterno}"
                               widgetVar="dlgEditar" resizable="true" showEffect="clip"
+                              maximizable="true"
+                              minimizable="true"
                               hideEffect="fold" style="font-size: 13px">
                         <b:panel>
                             <b:panelGrid id="panelEditar" size="lg"
-                                         colSpans="3,9"
+                                         colSpans="2,10"
                                          style="margin: 0 auto">
 
                                 <h:outputLabel for="nombre" value="Nombre" />
