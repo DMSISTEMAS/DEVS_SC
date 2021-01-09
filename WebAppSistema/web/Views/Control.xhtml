@@ -34,8 +34,8 @@
                                     <th>Libro</th>
                                     <th style="width: 10px"></th>
                                     <th>Buscar</th>
-                                    <th></th>
-                                    <th></th>
+                                    <th style="width: 10px"></th>
+                                    <th>Imprimir lista</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -69,8 +69,17 @@
                                                          background-size: 36px; background-repeat: no-repeat"
                                                          title="Buscar" 
                                                          onclick="ajax:blockUIBean.waitFiveSeconds()"/></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td style="width: 10px"></td>
+                                    <td>
+
+                                        <h:commandLink value="" target="_blank"
+                                                       actionListener="#{control.imprimirLista()}">
+                                            <h:graphicImage value="/img/print.png"
+                                                            style="height: 32px; width: 32px;" onclick="ajax:blockUIBean.waitFiveSeconds()"/>
+                                        </h:commandLink>
+
+                                    </td>
+
                                     <td></td>
                                 </tr>
                             </tbody>

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 7/09/2020 11:31:51 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 6/01/2021 08:24:24 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.cce.sistema.model.Porcentaje" table="porcentaje" catalog="db_cce" optimistic-lock="version">
         <id name="idPorcentaje" type="java.lang.Integer">
@@ -28,6 +28,15 @@
         </property>
         <property name="descripcion" type="string">
             <column name="descripcion" length="100" />
+        </property>
+        <property name="dias" type="java.lang.Integer">
+            <column name="dias" />
+        </property>
+        <property name="puntualidad" type="java.lang.Long">
+            <column name="puntualidad" precision="10" scale="0" />
+        </property>
+        <property name="conducta" type="java.lang.Long">
+            <column name="conducta" precision="10" scale="0" />
         </property>
         <set name="registros" table="registro" inverse="true" lazy="true" fetch="select">
             <key>

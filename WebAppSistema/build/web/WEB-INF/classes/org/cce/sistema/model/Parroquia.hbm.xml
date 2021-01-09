@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 7/09/2020 11:31:51 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 6/01/2021 08:24:24 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.cce.sistema.model.Parroquia" table="parroquia" catalog="db_cce" optimistic-lock="version">
         <id name="idParroquia" type="java.lang.Integer">

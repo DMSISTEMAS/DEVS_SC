@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="lista" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d7d2dcd2-5ed8-451b-b95e-299234171b12">
-	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="0"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="lista" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d7d2dcd2-5ed8-451b-b95e-299234171b12">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="257"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
@@ -13,7 +13,16 @@
 			<style backcolor="#F2F3F4"/>
 		</conditionalStyle>
 	</style>
-	<queryString language="SQL">
+	<parameter name="IDLIBRO" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IDHORARIO" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IDCATEQUISTA" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
 		<![CDATA[SELECT
   catequizado.apellidoPaterno AS appcatequizando,
   catequizado.apellidoMaterno AS apmcatequizando,
@@ -49,8 +58,9 @@ FROM bitacora
   INNER JOIN horario
     ON registro.idHorario = horario.idHorario
 WHERE bitacora.semana =1
-AND libro.idLibro = 8
-AND horario.idHorario = 5
+AND libro.idLibro = $P{IDLIBRO}
+AND horario.idHorario = $P{IDHORARIO}
+AND registro.idCatequista=$P{IDCATEQUISTA}
 GROUP BY bitacora.semana,
          bitacora.puntualidad,
          bitacora.asistencia,
@@ -106,27 +116,13 @@ ORDER BY appcatequizando]]>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="horariomombre" class="java.lang.String"/>
-	<field name="FECHA1" class="java.sql.Date">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="ASISTENCIA1" class="java.math.BigDecimal">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="PUNTUALIDAD1" class="java.math.BigDecimal">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="CONDUCTA1" class="java.math.BigDecimal">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="TAREA1" class="java.math.BigDecimal">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="CALIFICACIÓN EXTRA1" class="java.math.BigDecimal">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="ASEO1" class="java.math.BigDecimal">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
+	<field name="FECHA1" class="java.sql.Date"/>
+	<field name="ASISTENCIA1" class="java.math.BigDecimal"/>
+	<field name="PUNTUALIDAD1" class="java.math.BigDecimal"/>
+	<field name="CONDUCTA1" class="java.math.BigDecimal"/>
+	<field name="TAREA1" class="java.math.BigDecimal"/>
+	<field name="CALIFICACIÓN EXTRA1" class="java.math.BigDecimal"/>
+	<field name="ASEO1" class="java.math.BigDecimal"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -681,40 +677,118 @@ ORDER BY appcatequizando]]>
 				</graphicElement>
 			</rectangle>
 			<textField>
-				<reportElement x="0" y="66" width="268" height="10" uuid="df7839d7-d980-4dff-9eb9-5df75e450072"/>
-				<textElement verticalAlignment="Middle">
+				<reportElement x="0" y="26" width="270" height="20" uuid="df7839d7-d980-4dff-9eb9-5df75e450072"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="7" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["CATEQUISTA: "+$F{niombrecatequista}.toUpperCase()+" "+$F{appcatequista}.toUpperCase()+" "+$F{apmcatequista}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="1" y="10" width="100" height="10" uuid="c2351707-39bc-41cb-a582-2e1942234f65"/>
+				<reportElement x="0" y="56" width="135" height="10" uuid="c2351707-39bc-41cb-a582-2e1942234f65"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{dia}]]></textFieldExpression>
 			</textField>
 			<textField pattern="h.mm a">
-				<reportElement x="1" y="23" width="53" height="15" uuid="4c646a0b-dd6b-4a52-bdad-8bff0a2cc25e"/>
+				<reportElement x="0" y="66" width="68" height="10" uuid="4c646a0b-dd6b-4a52-bdad-8bff0a2cc25e"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle">
 					<font size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{horaInicio}]]></textFieldExpression>
 			</textField>
 			<textField pattern="h.mm a">
-				<reportElement x="57" y="24" width="53" height="14" uuid="b14b6397-4515-47a8-a240-5aba973bf8d9"/>
-				<textElement>
+				<reportElement x="67" y="66" width="68" height="10" uuid="b14b6397-4515-47a8-a240-5aba973bf8d9"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{horaFin}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Opaque" x="1" y="0" width="100" height="10" forecolor="#000000" backcolor="#F2F3F4" uuid="7828d39f-c78d-45f7-a8cb-313bfcc44d35"/>
+				<reportElement mode="Opaque" x="0" y="46" width="135" height="10" forecolor="#000000" backcolor="#F2F3F4" uuid="7828d39f-c78d-45f7-a8cb-313bfcc44d35"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
 					<font fontName="SansSerif" size="7" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[HORARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="135" y="46" width="135" height="10" forecolor="#000000" backcolor="#F2F3F4" uuid="21f22357-74a4-43f8-a79b-41744431960f"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="7" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[LIBRO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="135" y="56" width="135" height="20" uuid="9fdce4ab-985c-4671-8be6-a66e709b099e"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libronombre}+" "+$F{descripcion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="2" width="270" height="24" uuid="6fe025b0-8b84-49b2-b827-97f3051787ef"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARROQUIA SAN PEDRO APÓSTOL, SAN PEDRO ZICTEPEC, TENANGO DEL VALLE.]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -980,27 +1054,20 @@ ORDER BY appcatequizando]]>
 	<pageFooter>
 		<band height="25" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="2eb17f7a-25e0-45ca-b850-698b23e35029"/>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#000000" backcolor="#F2F3F4" uuid="2eb17f7a-25e0-45ca-b850-698b23e35029"/>
 				<textField evaluationTime="Report">
-					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="d4a553ba-b6e1-47bf-adce-7257238d57f6"/>
+					<reportElement style="Column header" mode="Transparent" x="783" y="1" width="40" height="20" forecolor="#000000" uuid="d4a553ba-b6e1-47bf-adce-7257238d57f6"/>
 					<textElement verticalAlignment="Middle">
 						<font fontName="SansSerif" size="10" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="c04abe8f-ed80-4b84-b565-2f1c6ade5b0f"/>
+					<reportElement style="Column header" mode="Transparent" x="703" y="1" width="80" height="20" forecolor="#000000" uuid="c04abe8f-ed80-4b84-b565-2f1c6ade5b0f"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="SansSerif" size="10" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
-				</textField>
-				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="d8992791-9da9-432c-a874-463deb03e260"/>
-					<textElement verticalAlignment="Middle">
-						<font fontName="SansSerif" size="10" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>

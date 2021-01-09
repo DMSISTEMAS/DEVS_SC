@@ -4,7 +4,7 @@
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
 	<property name="ireport.zoom" value="1.3310000000000006"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="76"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="IDREGISTRO" class="java.lang.Integer"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT db_cce.catequizado.nombre,
@@ -291,6 +291,9 @@ FROM db_cce.registro
 			</line>
 			<line>
 				<reportElement x="0" y="247" width="226" height="1" uuid="8b3b21a0-45bc-4c22-8493-c7e275518fbe"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
 			</line>
 			<rectangle>
 				<reportElement x="226" y="172" width="326" height="115" uuid="b25f80ff-811e-4fef-bfb8-25dbeddf84bd"/>
@@ -315,7 +318,7 @@ FROM db_cce.registro
 			<staticText>
 				<reportElement x="0" y="12" width="572" height="20" uuid="a512d9cb-2c1c-47f1-b42f-8ee9d58f1543"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="false"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[PARROQUIA SAN PEDRO APÓSTOL, SAN PEDRO ZICTEPEC, TENANGO DEL VALLE.]]></text>
 			</staticText>
@@ -349,7 +352,7 @@ FROM db_cce.registro
 			<staticText>
 				<reportElement x="0" y="332" width="572" height="20" uuid="8055f5ef-98c9-4de2-a33e-24c2bf847f5b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="false"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[PARROQUIA SAN PEDRO APÓSTOL, SAN PEDRO ZICTEPEC, TENANGO DEL VALLE.]]></text>
 			</staticText>
@@ -502,6 +505,9 @@ FROM db_cce.registro
 			</staticText>
 			<line>
 				<reportElement x="0" y="567" width="226" height="1" uuid="09937393-00c6-4dbd-9a47-c80d7ec36c96"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
 			</line>
 			<staticText>
 				<reportElement mode="Transparent" x="552" y="492" width="20" height="115" forecolor="#000000" backcolor="#FFFFFF" uuid="2642d594-1315-4e7d-954a-d14ac44a7838"/>

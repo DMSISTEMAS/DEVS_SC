@@ -84,7 +84,7 @@
 							<b:dataTableColumn label="Credencial" style="width: 4%">
 								<h:commandLink value="" target="_blank"
 											   actionListener="#{inscripcion.imprimirCredencial(var.idRegistro)}">
-									<h:graphicImage value="/img/credencial.png"
+									<h:graphicImage value="/img/qr.png"
 													style="height: 35px; width: 35px;" />
 								</h:commandLink>
 							</b:dataTableColumn>
@@ -92,14 +92,14 @@
 							<b:dataTableColumn label="Recibo" style="width: 4%">
 								<h:commandLink value="" target="_blank"
 											   actionListener="#{inscripcion.imprimirRecibo(var.idRegistro)}">
-									<h:graphicImage value="/img/document.png"
+									<h:graphicImage value="/img/print.png"
 													style="height: 32px; width: 32px;" />
 								</h:commandLink>
 							</b:dataTableColumn>
 
-							<b:dataTableColumn label="Actualizar" style="width: 4%">
+							<b:dataTableColumn label="Editar" style="width: 4%">
 								<b:commandButton value=""
-												 style="height: 28px; width: 28px; background-image: url('/img/update.png') !important;
+												 style="height: 28px; width: 28px; background-image: url('/img/editar_registro.png') !important;
 												 background-size: 26px; background-repeat: no-repeat"
 												 tooltip="Editar registro" />
 							</b:dataTableColumn>

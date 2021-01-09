@@ -10,6 +10,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.servlet.ServletContext;
+import org.cce.sistema.dao.CalificacionDao;
 
 import org.cce.sistema.dao.CatequistaDao;
 import org.cce.sistema.dao.CatequizadoDao;
@@ -19,6 +20,7 @@ import org.cce.sistema.dao.LibroDao;
 import org.cce.sistema.dao.ParrocoDao;
 import org.cce.sistema.dao.PorcentajeDao;
 import org.cce.sistema.dao.RegistroDao;
+import org.cce.sistema.imp.CalificacionDaoImp;
 import org.cce.sistema.imp.CatequistaDaoImp;
 import org.cce.sistema.imp.CatequizadoDaoImp;
 import org.cce.sistema.imp.CicloRegDaoImp;
@@ -30,6 +32,7 @@ import org.cce.sistema.imp.RegistroDaoImp;
 import org.cce.sistema.model.Catequista;
 import org.cce.sistema.model.Catequizado;
 import org.cce.sistema.model.Bitacora;
+import org.cce.sistema.model.Calificacion;
 import org.cce.sistema.model.Horario;
 import org.cce.sistema.model.Libro;
 import org.cce.sistema.model.Parroco;
@@ -301,7 +304,7 @@ public class InscripcionBean implements Serializable {
 
         // COLOCAMOS EL ID DEL PORCENTAJE
         String[] por;
-        por = this.nombreCiclo.split("_");
+        por = this.nombrePorcentaje.split("_");
         this.porcentaje.setIdPorcentaje(Integer.parseInt(por[1]));
         this.registro.setPorcentaje(porcentaje);
 
@@ -326,6 +329,12 @@ public class InscripcionBean implements Serializable {
         // LIMPIAMOS EL OBJETO REGISTRO
         this.registro = new Registro();
         this.registro.setIdRegistro(Integer.parseInt(f));
+
+        //GUARDAMOS EN LA TABLA CALIFICACION
+        Calificacion cal = new Calificacion();
+        cal.setRegistro(registro);
+        CalificacionDao calificacionDao = new CalificacionDaoImp();
+        calificacionDao.guardar(cal);
 
         // VALIDAMOS EL CICLO PARA GUARDARLO EN LA TABLA BITACORA
         // if (nombreCiclo.contains("2019-2020")) {
@@ -377,6 +386,7 @@ public class InscripcionBean implements Serializable {
         credencial.getCredencial(ruta, idReg);
         FacesContext.getCurrentInstance().responseComplete();
     }
+
     public void imprimirRecibo(String idReg) {
         Recibo recibo = new Recibo();
         FacesContext facesContext = FacesContext.getCurrentInstance();

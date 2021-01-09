@@ -14,7 +14,6 @@
      catequizado.`apellidoMaterno` AS catequizado_apellidoMaterno,
      catequizado.`foto` AS catequizado_foto,
      registro.`idRegistro` AS registro_idRegistro,
-     registro.`idCiclo` AS registro_idCiclo,
      registro.`idParroco` AS registro_idParroquia,
      horario.`idHorario` AS horario_idHorario,
      horario.`dia` AS horario_dia,
@@ -50,7 +49,6 @@ WHERE
 	<field name="catequizado_apellidoMaterno" class="java.lang.String"/>
 	<field name="catequizado_foto" class="java.io.InputStream"/>
 	<field name="registro_idRegistro" class="java.lang.Integer"/>
-	<field name="registro_idCiclo" class="java.lang.Integer"/>
 	<field name="registro_idParroquia" class="java.lang.Integer"/>
 	<field name="horario_idHorario" class="java.lang.Integer"/>
 	<field name="horario_dia" class="java.lang.String"/>
