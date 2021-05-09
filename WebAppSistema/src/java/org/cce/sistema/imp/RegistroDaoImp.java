@@ -108,4 +108,23 @@ public class RegistroDaoImp implements RegistroDao {
 		return lista;
 	}
 
+    @Override
+    public void actualizarCostoIscripcion(Long costo, int id) {
+                Session session = HibernateUtil.getSf().openSession();
+        try {
+            session.beginTransaction();
+            String hql = "UPDATE registro SET costo='" + costo + "' WHERE idRegistro='" + id + "'";
+            session.createSQLQuery(hql).executeUpdate();
+            session.getTransaction().commit();
+            facesContext.execute("Swal.fire({position: 'top-center', icon: 'success', showConfirmButton: false, timer: 4000, title: 'Costo de inscripción modificado correctamente', showClass: {popup: 'animate__animated animate__fadeInDown'},hideClass: {popup: 'animate__animated animate__fadeOutUp'}})");
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+
+        }
+    }
+
 }

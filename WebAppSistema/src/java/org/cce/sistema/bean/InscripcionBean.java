@@ -59,11 +59,13 @@ public class InscripcionBean implements Serializable {
     private String nombreParroquia;
     private String nombreCiclo;
     private String nombrePorcentaje;
-    private List<String> maxVal;
+    private final List<String> maxVal;
     private Calendar calendar = Calendar.getInstance();
     private Bitacora bitacora;
     private Registro regCredencial;
     private Porcentaje porcentaje;
+    private Long costoInscripcion;
+    private int idRegistro;
     RequestContext facesContext = RequestContext.getCurrentInstance();
 
     public InscripcionBean() {
@@ -225,6 +227,22 @@ public class InscripcionBean implements Serializable {
 
     public void setNombrePorcentaje(String nombrePorcentaje) {
         this.nombrePorcentaje = nombrePorcentaje;
+    }
+
+    public Long getCostoInscripcion() {
+        return costoInscripcion;
+    }
+
+    public void setCostoInscripcion(Long costoInscripcion) {
+        this.costoInscripcion = costoInscripcion;
+    }
+
+    public int getIdRegistro() {
+        return idRegistro;
+    }
+
+    public void setIdRegistro(int idRegistro) {
+        this.idRegistro = idRegistro;
     }
 
     public List<String> completeCatequizado(String nombre) {
@@ -394,6 +412,18 @@ public class InscripcionBean implements Serializable {
         String ruta = servletContext.getRealPath("/QR/recibo.jasper");
         recibo.getRecibo(ruta, idReg);
         FacesContext.getCurrentInstance().responseComplete();
+    }
+
+    public void recibirDatos(Long costo, int id) {
+        this.setCostoInscripcion(costo);
+        this.setIdRegistro(id);
+    }
+
+    public void actualizarCosto(Long c, int i) {
+        RegistroDao rDao = new RegistroDaoImp();
+        rDao.actualizarCostoIscripcion(c, i);
+        RequestContext.getCurrentInstance().execute("PF('dlgActualizarPrecio').hide()");
+        RequestContext.getCurrentInstance().update("frmPrincipal");
     }
 
 }

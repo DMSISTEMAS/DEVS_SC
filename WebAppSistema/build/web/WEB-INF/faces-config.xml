@@ -7,7 +7,7 @@
     <lifecycle>
         <phase-listener>org.cce.sistema.filter.filtroUrl</phase-listener>
     </lifecycle>
-<!--    <application>
+    <!--    <application>
         <resource-handler>org.omnifaces.resourcehandler.CombinedResourceHandler</resource-handler>
     </application>-->
 </faces-config>

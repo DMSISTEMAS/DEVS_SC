@@ -14,4 +14,6 @@ public interface RegistroDao {
 	public void borrar(Registro registro);
 
 	public List<String> obtenerMaxValor();
+        
+        public void actualizarCostoIscripcion(Long costo, int id);
 }

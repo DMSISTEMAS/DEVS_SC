@@ -4,7 +4,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-	  xmlns:b="http://bootsfaces.net/ui">
+      xmlns:b="http://bootsfaces.net/ui">
 
     <h:head>
         <link
@@ -24,39 +24,39 @@
 
                     <b:panel id="topbar" title="ADMINISTRACIÓN DE
                              INSCRIPCIONES-CICLO ESCOLAR 2019-2020" style="margin: 0 auto; text-align: center; font-size: 12px; font-family: 'Barlow', sans-serif">
-						<table border="0">
-							<thead>
-								<tr>
-									<th>NUEVO</th>
-									<th></th>
-									<th></th>
-									<th></th>
-									<th></th>
-									<th></th>
-									<th></th>
-									<th></th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>
-										<b:commandButton value="" 
-														 oncomplete="PF('dlgAgregar').show()"
-														 style="height: 50px; width: 50px; background-image: url('/img/add.png') !important; 
-														 background-size: 50px; background-repeat: no-repeat"
-														 tooltip="Agregar nuevo registro" 
-														 update="frmAgregar" />
-									</td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-							</tbody>
-						</table>
+                        <table border="0">
+                            <thead>
+                                <tr>
+                                    <th>NUEVO</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <b:commandButton value="" 
+                                                         oncomplete="PF('dlgAgregar').show()"
+                                                         style="height: 50px; width: 50px; background-image: url('/img/add.png') !important; 
+                                                         background-size: 50px; background-repeat: no-repeat"
+                                                         tooltip="Agregar nuevo registro" 
+                                                         update="frmAgregar" />
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
 
                     </b:panel>
                 </h:form>
@@ -64,54 +64,61 @@
 
                 <!--Formulario principal-->
                 <h:form id="frmPrincipal">
-					<b:growl id="growlMsg" globalOnly="true" placementFrom="left"
+                    <b:growl id="growlMsg" globalOnly="true" placementFrom="left"
                              show-detail="true" show-summary="false" allowDismiss="true"
                              delay="10000" escape="true" 
                              animation-enter="animated bounceInDown"
                              animation-exit="animated flipOutX"/>
                     <b:panel id="pnlPrincipal"
                              style="margin: 0 auto; text-align: center; font-size: 12px; font-family: 'Barlow', sans-serif">
-						<b:dataTable var="var" value="#{inscripcion.listaRegistro}">
-							<b:dataTableColumn value="#{var.catequizado.nombre} #{var.catequizado.apellidoPaterno} #{var.catequizado.apellidoMaterno}" />
-							<b:dataTableColumn value="#{var.libro.nombre}" label="Libro"/>
-							<b:dataTableColumn value="#{var.horario.nombre}" label="Ciclo" />
-							<b:dataTableColumn value="#{var.horario.dia} de #{var.horario.horaInicio} hrs. a #{var.horario.horaFin} hrs." label="Horario" />
-							<b:dataTableColumn value="#{var.catequista.nombre} #{var.catequista.apellidoPaterno} #{var.catequista.apellidoMaterno}" label="Catequista" />
-							<b:dataTableColumn value="#{var.parroco.parroquia}" label="Parroquia" />
-							<b:dataTableColumn value="#{var.idRegistro}" label="Folio recibo" />
-							<b:dataTableColumn value="#{var.costo}" label="Costo inscripción" />
+                        <b:dataTable var="var" value="#{inscripcion.listaRegistro}">
+                            <b:dataTableColumn value="#{var.catequizado.nombre} #{var.catequizado.apellidoPaterno} #{var.catequizado.apellidoMaterno}" />
+                            <b:dataTableColumn value="#{var.libro.nombre}" label="Libro"/>
+                            <b:dataTableColumn value="#{var.horario.nombre}" label="Ciclo" />
+                            <b:dataTableColumn value="#{var.horario.dia} de #{var.horario.horaInicio} hrs. a #{var.horario.horaFin} hrs." label="Horario" />
+                            <b:dataTableColumn value="#{var.catequista.nombre} #{var.catequista.apellidoPaterno} #{var.catequista.apellidoMaterno}" label="Catequista" />
+                            <b:dataTableColumn value="#{var.parroco.parroquia}" label="Parroquia" />
+                            <b:dataTableColumn value="#{var.idRegistro}" label="Folio recibo" />
+                            <b:dataTableColumn value="#{var.costo}" label="Costo inscripción" />
 
-							<b:dataTableColumn label="Credencial" style="width: 4%">
-								<h:commandLink value="" target="_blank"
-											   actionListener="#{inscripcion.imprimirCredencial(var.idRegistro)}">
-									<h:graphicImage value="/img/qr.png"
-													style="height: 35px; width: 35px;" />
-								</h:commandLink>
-							</b:dataTableColumn>
+                            <b:dataTableColumn label="Credencial" style="width: 4%">
+                                <h:commandLink value="" target="_blank"
+                                               title="Imprimir credencial de #{var.catequizado.nombre} #{var.catequizado.apellidoPaterno} #{var.catequizado.apellidoMaterno}"
+                                               actionListener="#{inscripcion.imprimirCredencial(var.idRegistro)}">
+                                    <h:graphicImage value="/img/qr.png"
+                                                    style="height: 35px; width: 35px;" />
+                                </h:commandLink>
+                            </b:dataTableColumn>
 
-							<b:dataTableColumn label="Recibo" style="width: 4%">
-								<h:commandLink value="" target="_blank"
-											   actionListener="#{inscripcion.imprimirRecibo(var.idRegistro)}">
-									<h:graphicImage value="/img/print.png"
-													style="height: 32px; width: 32px;" />
-								</h:commandLink>
-							</b:dataTableColumn>
+                            <b:dataTableColumn label="Recibo" style="width: 4%">
+                                <h:commandLink value="" target="_blank" 
+                                               title="Imprimir recibo de #{var.catequizado.nombre} #{var.catequizado.apellidoPaterno} #{var.catequizado.apellidoMaterno}"
+                                               actionListener="#{inscripcion.imprimirRecibo(var.idRegistro)}">
+                                    <h:graphicImage value="/img/print.png"
+                                                    style="height: 32px; width: 32px;" />
+                                </h:commandLink>
+                            </b:dataTableColumn>
 
-							<b:dataTableColumn label="Editar" style="width: 4%">
-								<b:commandButton value=""
-												 style="height: 28px; width: 28px; background-image: url('/img/editar_registro.png') !important;
-												 background-size: 26px; background-repeat: no-repeat"
-												 tooltip="Editar registro" />
-							</b:dataTableColumn>
+                            <b:dataTableColumn label="Modificar" style="width: 4%">
+                                <p:commandButton value=""
+                                                 actionListener="#{inscripcion.recibirDatos(var.costo, var.idRegistro)}"
+                                                 onclick="PF('dlgActualizarPrecio').show()"
+                                                 style="height: 28px; width: 28px; background-image: url('/img/editar_registro.png') !important;
+                                                 background-size: 26px; background-repeat: no-repeat"
+                                                 title="Modificar costo de #{var.catequizado.nombre} #{var.catequizado.apellidoPaterno} #{var.catequizado.apellidoMaterno}"
+                                                 update="frmEditarPrecio:costo, frmEditarPrecio:idCosto ">
 
-							<b:dataTableColumn label="Borrar" style="width: 4%">
-								<b:commandButton value=""
-												 style="height: 28px; width: 28px; background-image: url('/img/delete.png') !important;
-												 background-size: 26px; background-repeat: no-repeat"
-												 tooltip="Editar registro" />
-							</b:dataTableColumn>
+                                </p:commandButton>
+                            </b:dataTableColumn>
 
-						</b:dataTable>
+                            <b:dataTableColumn label="Borrar" style="width: 4%">
+                                <b:commandButton value=""
+                                                 style="height: 28px; width: 28px; background-image: url('/img/delete.png') !important;
+                                                 background-size: 26px; background-repeat: no-repeat"
+                                                 tooltip="Borrar registro" />
+                            </b:dataTableColumn>
+
+                        </b:dataTable>
                     </b:panel>
                 </h:form>
                 <!--Formulario principal-->
@@ -127,7 +134,7 @@
                         <b:panel id="pnlAgregar">
                             <b:messages id="msg" showDetail="true" />
                             <b:panelGrid id="panelAgregar" size="lg"
-										 columns="1"
+                                         columns="1"
                                          style="margin: 0 auto;">
 
                                 <h:outputLabel value="Catequizando"
@@ -204,7 +211,7 @@
                                     <h:message for="byNombrePorcentaje" />
                                 </p:autoComplete>
 
-							</b:panelGrid>
+                            </b:panelGrid>
                         </b:panel>
                         <p:spacer width="480" height="15" />
                         <b:commandButton id="track"
@@ -212,6 +219,40 @@
                                          background-size: 50px; background-repeat: no-repeat"
                                          value="" update="pnlAgregar, msg" tooltip="Guardar registro"
                                          actionListener="#{inscripcion.guardarRegistro()}">
+                        </b:commandButton>
+                    </p:dialog>
+                </h:form>
+                <!--Diálogo para agregar-->
+
+                <!--Diálogo para agregar-->
+                <h:form id="frmEditarPrecio">
+
+                    <p:dialog id="dialogoPrecio" widgetVar="dlgActualizarPrecio"
+                              header="Modificar costo de inscripción" showEffect="clip"
+                              hideEffect="explode" resizable="false" responsive="true"
+                              style="font-size:13px">
+                        <b:panel id="pnlEditarPrecio">
+                            <b:messages id="msg" showDetail="true" />
+                            <b:panelGrid id="panelEditarPrecio" size="lg"
+                                         columns="1"
+                                         style="margin: 0 auto;">
+                                <b:label id="idCosto" value="Folio recibo No. #{inscripcion.idRegistro}" style="font-size: 15px"/>
+                                <br></br>
+                                <h:outputLabel for="costo" value="Costo de inscripción" />
+                                <b:inputText id="costo" value="#{inscripcion.costoInscripcion}"
+                                             required="true" requiredMessage="Requiere costo"
+                                             placeholder="Costo de inscripción">
+                                    <b:message for="costo" />
+                                </b:inputText>
+
+                            </b:panelGrid>
+                        </b:panel>
+                        <p:spacer width="480" height="15" />
+                        <b:commandButton id="track"
+                                         style="height: 50px; width: 50px; background-image: url('/img/save.png') !important;
+                                         background-size: 50px; background-repeat: no-repeat"
+                                         value="" update="pnlEditarPrecio, msg" tooltip="Guardar registro"
+                                         actionListener="#{inscripcion.actualizarCosto(inscripcion.costoInscripcion, inscripcion.idRegistro)}">
                         </b:commandButton>
                     </p:dialog>
                 </h:form>
