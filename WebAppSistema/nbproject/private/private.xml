@@ -2,18 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/home/dmsistemas/Desarrollo/GitProjects/DEVS_SC/WebAppSistema/src/java/org/cce/sistema/imp/RegistroDaoImp.java</file>
-            <file>file:/home/dmsistemas/Desarrollo/GitProjects/DEVS_SC/WebAppSistema/nbproject/build-impl.xml</file>
-            <file>file:/home/dmsistemas/Desarrollo/GitProjects/DEVS_SC/WebAppSistema/src/java/hibernate.cfg.xml</file>
-            <file>file:/home/dmsistemas/Desarrollo/GitProjects/DEVS_SC/WebAppSistema/web/WEB-INF/faces-config.xml</file>
-            <file>file:/home/dmsistemas/Desarrollo/GitProjects/DEVS_SC/WebAppSistema/web/Views/Calificacion.xhtml</file>
-            <file>file:/home/dmsistemas/Desarrollo/GitProjects/DEVS_SC/WebAppSistema/web/META-INF/context.xml</file>
-            <file>file:/home/dmsistemas/Desarrollo/GitProjects/DEVS_SC/WebAppSistema/src/java/org/cce/sistema/bean/CalificacionBean.java</file>
-            <file>file:/home/dmsistemas/Desarrollo/GitProjects/DEVS_SC/WebAppSistema/src/java/org/cce/sistema/bean/InscripcionBean.java</file>
-            <file>file:/home/dmsistemas/Desarrollo/GitProjects/DEVS_SC/WebAppSistema/web/Views/Inscripciones.xhtml</file>
-            <file>file:/home/dmsistemas/Desarrollo/GitProjects/DEVS_SC/WebAppSistema/web/Views/Catequista.xhtml</file>
-            <file>file:/home/dmsistemas/Desarrollo/GitProjects/DEVS_SC/WebAppSistema/src/java/org/cce/sistema/dao/RegistroDao.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
